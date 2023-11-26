@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <title>Fire Anomaly Detector</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        header {
+            font-family: sans-serif;
+            width: 100%;
+            min-height: 120vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('https://imgs.search.brave.com/iQlHE_HN_OyCnED7RIJZ6AC4IqB6g-K6pX57XRxjPLk/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/ZnJlZWNvZGVjYW1w/Lm9yZy9uZXdzL2Nv/bnRlbnQvaW1hZ2Vz/L3NpemUvdzIwMDAv/MjAyMi8wOS9qb25h/dGFuLXBpZS0zbDNS/d1FkSFJIZy11bnNw/bGFzaC5qcGc');
+            background-size: cover;
+            position: absolute;
+        }
+
+        .info {
+            color: white;
+            font-size: 20px;
+            padding: 20px 70px;
+            cursor: pointer;
+        }
+
+        .info span {
+            margin: 0 10px;
+        }
+
+        nav {
+            width: 100%;
+            height: 70px;
+            padding: 0 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 2em;
+            font-family: normal;
+            letter-spacing: 2px;
+        }
+
+        .logo i {
+            color: #e84393;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 20px;
+            transition: 0.4s;
+        }
+
+        .menu a:last-child {
+            background: #e84393;
+            border-radius: 8px;
+        }
+
+        .menu a:hover {
+            background: #e84393;
+            border-radius: 8px;
+        }
+
+        .box {
+            background: white;
+            width: 500px;
+            height: 400px;
+            position: absolute;
+            top: 25%;
+            right: 10%;
+            padding: 30px;
+            opacity:0.8;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        form input[type="file"] {
+            width: 100%;
+            padding: 20px 10px;
+            margin: 10px 0;
+            outline: none;
+            border: none;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        form input[type="submit"] {
+            width: 100%;
+            padding: 20px 10px;
+            margin: 10px 0;
+            outline: none;
+            border: none;
+            background: #e84393;
+            color: white;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        form input[type="submit"]:hover {
+            background: transparent;
+            border: 1px solid grey;
+            color: black;
+        }
+
+        .box span {
+            color: #e84393;
+            cursor: pointer;
+        }
+
+        .htext {
+            position: absolute;
+            top: 20%;
+            left: 5%;
+            max-width: 600px;
+            color: white;
+        }
+
+        .htext h1 {
+            font-size: 2em;
+        }
+
+        .htext h2 {
+            font-size: 4em;
+        }
+
+        .htext span {
+            color: #e84393;
+        }
+
+        .htext p {
+            margin: 15px 0;
+            line-height: 2em;
+        }
+
+        .htext a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 20px;
+            border: 1px solid white;
+            letter-spacing: 2px;
+            border-radius: 8px;
+            transition: 0.4s;
+        }
+
+        .htext a:hover {
+            background: #e84393;
+        }
+
+        @media screen and (max-width: 700px) {
+            .body {
+                padding: 1rem;
+            }
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="info">
+            <span> <i class="fa fa-phone"></i>+2(11) 434 4827   username:{{session['name']}}</span>
+            <span> <i class="fa fa-envelope"></i> info@example.com</span>
+        </div>
+        <nav>
+            <div class="logo">
+                <i class="fa fa-fire"></i> Fire Detector
+            </div>
+            <div class="menu">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="/locate">Add Device</a>
+                <a href="/notification">Messages</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </nav>
+
+        <div class="box">
+            <h2>Fire Anomaly Detection</h2>
+            <form method="POST" action="/detect" enctype="multipart/form-data">
+                <select name="ip_address" id="ip_address">
+                    {% if devices %}
+                    {% for device in devices['$mail'] %}
+                    <option>{{device['name']}}--{{ device['ip_address'] }}</option>
+                    {% endfor %}
+                    {% endif %}
+                </select>
+                <input type="submit" value="Submit" />
+            </form>
+            <p>Upload IP to detect fire anomalies.</p>
+        </div>
+
+        <div class="htext">
+            <h1>Fire Anomaly Detection</h1>
+            <h2>Ensuring Safety <span>Everywhere</span></h2>
+            <p>
+                Detect fire anomalies with our advanced detection system. Your safety is our priority.
+            </p>
+            <br>
+            <a href="#">Read more</a>
+        </div>
+    </header>
+</body>
+
+</html>

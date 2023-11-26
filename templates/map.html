@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
+</head>
+<body ng-app="myapp" ng-controller="ctrl1">
+    <div id='map'>
+        <h1>{{coordinates}}</h1>
+    </div>
+    
+<script>
+    var app = angular.module("myapp", []);
+
+    app.controller("ctrl1", function ($scope, $http) {
+        mapboxgl.accessToken = 'pk.eyJ1IjoicmF5aG9uIiwiYSI6ImNscGFxYWlzZjBhdXEya2xzYmp4Z2pmYzMifQ.-nok45x5VrCCGMN7-Qa2lQ';
+
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [78.1191629537596,9.923679697208968],
+            zoom: 9
+        });
+        // Add a click event listener to the map
+        map.on('click', function (e) {
+            // Get the coordinates of the clicked location
+            var coordinates = e.lngLat.toArray();
+            alert('Clicked at: ' + coordinates);
+
+            // Construct the URL with coordinates as query parameters
+            var url = 'device?lat=' + coordinates[1] + '&lng=' + coordinates[0];
+
+            // Redirect to the new page
+            window.location.href = url;
+        });
+    });
+</script>
+</body>
+</html>
